@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Eléctrica</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Calculadora Eléctrica</h1>
+
+    <h2>Convertir Unidades</h2>
+    <form action="">
+        <!-- Aquí puedes agregar los campos para convertir unidades eléctricas -->
+        <!-- Por ejemplo: -->
+        <input type="number" name="valor" placeholder="Valor">
+        <select name="unidad_entrada">
+            <option value="V">Voltios</option>
+            <option value="A">Amperios</option>
+            <option value="Ω">Ohmios</option>
+        </select>
+        <select name="unidad_salida">
+            <option value="V">Voltios</option>
+            <option value="A">Amperios</option>
+            <option value="Ω">Ohmios</option>
+        </select>
+        <button type="submit">Convertir</button>
+    </form>
+
+    <h2>Calcular Resistencia Equivalente</h2>
+    <form action="{{ url_for('calcular_resistencia') }}" method="POST">
+        <input type="radio" name="tipo_circuito" value="serie" checked> En Serie
+        <input type="radio" name="tipo_circuito" value="paralelo"> En Paralelo
+        <input type="number" name="r1" placeholder="R1">
+        <input type="number" name="r2" placeholder="R2">
+        <button type="submit">Calcular</button>
+    </form>
+
+    <h2>Calcular Ley de Ohm</h2>
+    <form action="{{ url_for('calcular_ohm') }}" method="POST">
+        <input type="number" name="voltaje" placeholder="Voltaje">
+        <input type="number" name="corriente" placeholder="Corriente">
+        <button type="submit">Calcular</button>
+    </form>
+</body>
+</html>
